@@ -1,1 +1,9 @@
-<h1 [ngStyle]="{'background-color':color}">Aquí verás el detalle del producto {{ producto }}</h1>
+<!-- <h1>Aquí verás el detalle del producto {{ producto?.name }}</h1> -->
+<ng-container *ngIf="!loading">
+    <h1 [ngStyle]="{'color': color}">Producto: {{producto?.name}}</h1>
+<h2 *ngIf="producto?.description">Descripción: {{producto?.description}}</h2>
+<h3>Precio: {{producto?.price | currency}}</h3>
+
+<button routerLink="/products">Volver a Productos</button>
+</ng-container>
+<ng-container *ngIf="loading"><i style="color: blue;">Cargando...</i></ng-container>
