@@ -1,3 +1,36 @@
-<p>
-  contact works!
-</p>
+<div class="container">
+  <form [formGroup]="formularioContacto" (ngSubmit)="enviar()">
+    <div class="mb-3">
+      <div class="mb-3">
+        <!-- Nombre -->
+        <label for="name" class="form-label">Nombre</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          formControlName="nombre"
+          [ngClass]="{'is-invalid': hayErrores('nombre','required') || hayErrores('nombre','minlength')}"
+        />
+      </div>
+      <div *ngIf="hayErrores('nombre','required')" class="text-danger">Nombre requerido</div>
+      <div *ngIf="hayErrores('nombre','minlength')" class="text-danger">Demasiado corto</div>
+      <!-- Email -->
+      <label for="email" class="form-label">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        aria-describedby="emailHelp"
+        formControlName="email"
+        [ngClass]="{'is-invalid': hayErrores('email','required') || hayErrores('email','email')}"
+      />
+      <div id="emailHelp" class="form-text">
+        We'll never share your email with anyone else.
+      </div>
+      <div *ngIf="hayErrores('email','required')" class="text-danger">Email requerido.</div>
+      <div *ngIf="hayErrores('email', 'email')" class="text-danger">Email inválido.</div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Enviar</button>
+  </form>
+</div>

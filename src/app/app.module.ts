@@ -8,19 +8,24 @@ import { HomeComponent } from './home/home.component';
 import { ProductsComponent } from './products/products.component';
 import { ContactComponent } from './contact/contact.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { LoaderComponent } from './loader/loader.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [				
+  declarations: [					
     AppComponent,
       HomeComponent,
       ProductsComponent,
       ContactComponent,
-      ProductDetailComponent
+      ProductDetailComponent,
+      LoaderComponent
    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterOutlet
+    RouterOutlet,
+    FormsModule, //Formularios de tipo plantilla
+    ReactiveFormsModule //Formularios reactivos
   ],
   providers: [],
   bootstrap: [AppComponent]
